@@ -1,35 +1,45 @@
 ## About Elytra
 
-Elytra is my recently created company. As such, the website and business model will be replicated here, and some decisions can be made, but all informations and data are fictives, for privacy reasons. 
+Elytra is a recently created company. The website and business model will be replicated here, but all informations and data are fictives, for privacy reasons.
 
-# Business model simulation -- Risk-based test plan
+# Elyta Booking Simulation API -- Test plan
 
-## Description
+## Model description
 
-The objective of this risk-based test plan is to ensure the direction can take quick decisions over pack prices and sales quantity. The test plan is risk based as the direction need the program as soon as possible to be able to prepare the first upcoming travel, on June 2026.
-The model allow to choose a number of sales, a sale price, a promotion amount, deduct transport, logement and tickets cost, and then show a clear report of the simulation. It should take into account variable prices, a ratio between price and number of sales, the guide need dependament of the group size, as well as transportation means. 
+The model emulates travel service inspired from Elytra business model. It allows customization of pack (product) and key components of the simulation and give clear report, of what the result of the simulation should be.
 
-## Risk assessment and Categorization
+This simulation contain : 
+- Pack (product) customization
+- Customer simulation 
+- Bookings simulation
+- Payments simulation
+- Availability simulation
+- Promo code simulation
+- Report & dashboard of the simulated travel
 
-Priority categorization : 
-High : Result and financial model possibly compromised or false (compromised data, prices, calculations...)
-Medium : Non main result aren't available on specific modelisation (a specific name, promo-code, date ...)
-Low : Result or simulation non scalable for big groups or packs (no available result or simulation for 60+ groups... )
+This siluation works with REST APi on Flask build, does not include account/authentification, or external services. Payment are simulated.
+
+## Test plan description
+
+This is a risk-based test plan, with a high priority on accuracy of business-rules. Lunch of the simulation should be ready before 02/28. 
+In this order : Functional testing, validation of business rules, API validation, and Boundary testing. 
+All feature should be tested based on risk prioritization. 
+Some features, if time does not permit, could be postponed, and will be tested upon that time. 
+
+## Risk assesment and Categorization
 
 Severity categorization : 
 Blocker : testing cannot continue
-Critical : Core feature broken (Key fields non customizable, non available graph...)
-Major : Important feature partially broken (individual transport price fields non changeable...)
+Critical : Core feature broken (Pack non customzable, misleading simulation results...)
+Major : Important feature partially broken (Customer report unailable, promo code non available...)
 Minor : Small functionnal issue (delays, lack of flexibility...)
 Trivial : UI / cosmetic 
 
-## Feature to be tested
+## Feature to be tested 
 
 High priority : 
-- Customization of main fields
-- Actual external data intergration
-- Simulation 
-- Dashboard
+- Customization of pack (product)
+- Dashboard & report
 
 Medium priority : 
 - Variable cost detail customization
@@ -40,26 +50,27 @@ Low priority :
 - Date 
 - Name customzation
 
-## Test approach an schedule
+## Test approach and schedule
 
-Smoke testing as soon as possible. 
-High priority feature must be manually tested before february the 28th, automated by march the 5th, regression test ready for march the 8th. 
-Medium and low priority feature will be properly tested after lunch of the model, the 10th of march.
+First realease scheduled for 02/28.
+First update on 02/10. 
 
-## Entry and exit criteria
+Simulation feature and customization should be approved before release. 
+Positive scenario : All main features are usable before release, less than 5 fields noncustomizables, under 5% of 400 errors messages. After release check used for minor fixes, or implemantation of futur features. 
+Negative scenario : Major features defects, main fields non available, unresponsive customizable feature, over 50% of 400 errors messages. Release delayed by 5 days. 
+
+If worth than negative scenario : temporary closure of project. 
+
+#### Entry and exit criteria
 
 Entry Criteria: Risk assessment complete, high-risk test cases ready, test environment set.
-Exit Criteria: All high-risk test cases executed, critical defects resolved, medium/low-risk areas tested (if time permits)
-
-## Risk mitigation strategy 
-
-For High-Risk Features: Identify high-risk areas. Ensure frequent testing during development (continuous integration). Work of defect before adding new feature. 
-For Medium-Risk Features: Prioritized testing based on feature complexity. Perform regression testing after high-risk features are validated.
-For Low-Risk Features:Testing deferred to later phases, if time do not permits, after lunch of model. 
+Exit Criteria: All high-risk test cases executed, critical defects resolved, API result 95%+ 200messages, medium/low-risk areas tested (if time permits).
 
 ## Metrics and reporting 
 
+Input reliability: % of accuracy of report and dashboard numbers (objective at 0,01 unit precision)
+Booking report: Number of cancellation or non reservation showed. 
 Risk-Based Coverage: % of high, medium, and low-risk features teste
-dDefect Metrics: Number of defects found in high-risk areas vs. medium and low-risk areas.
+Defect Metrics: Number of defects found in high-risk areas vs. medium and low-risk areas.
 Test Execution Progress: Number of test cases executed, passed, failed by risk level
 Risk Mitigation Report: Outcomes of high-risk testing, remaining risks
