@@ -30,5 +30,30 @@ Be aware that no external services, payment, account registration are included n
 ### Business model overview (High-Level Only) 
 
 This model is as destination of the company direction. 
-The simulation start 
+The simulation start from the pack customzation, all the way to pack release, passing by csutomer settings. 
+Price engine include price by pack, sales number, cost by customer, price by customization. 
+Data comes form UI fields selection, pass by backend database, are treated by SQL, before getting showned on the dashboard. 
+
+### Testing Strategy 
+
+The testing will be based on risk-based approach, due to short deadline. 
+Risk are identified with a focus on reliability of data, with more info available on portoflio-QA/1_Manual_QA/risk-graph.md
+Testing focused on data and calculation engine veracity. 
+
+### Risk assessment 
+
+Data veracity based risk -> Critical 
+Customization and dashoboard based risk -> major 
+UI and quickness of the software -> minor 
+
+#### Severity definition 
+
+Blocker : testing cannot continue
+Critical : Core feature broken (Pack non customzable, misleading simulation results...)
+Major : Important feature partially broken (Customer report unailable, promo code non available...)
+Minor : Small functionnal issue (delays, lack of flexibility...)
+Trivial : UI / cosmetic 
+
+### Features / Domains to be tested 
+
 
