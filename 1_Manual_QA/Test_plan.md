@@ -5,7 +5,7 @@ Author : Gabriel Samson
 
 ## Introduction
 
-The app is designed to allow to user to take an "image" of the person popularity at a determined instant, and be able to keep it in memory, to see its evolution. 
+The app is designed to allow to user to take an "image" of the person popularity at a determined instant, and be able to keep it in memory, to comprare to other result
 
 This document will serve as a reference of quality expectations and testing scope. It will also serve to define expected documentation and define the test strategy. 
 
@@ -15,11 +15,11 @@ This document will serve as a reference of quality expectations and testing scop
 
 - Delay
 - Calculation of the result
-- Historic of result veracity 
+- Historic storage and suppression
 - Free-plan and size limits 
 - Contact selection boundaries
 - Social medial boundaries
-- Historic and storag privacy
+- Historic privacy
 
 ### Out of scope test
 
@@ -39,7 +39,7 @@ This document will serve as a reference of quality expectations and testing scop
 
 ## Environment 
 
-Chrome, SQL.js, RapidAPI
+Chrome, supabase, RapidAPI
 
 ## Entry and exit criteria 
 
@@ -52,9 +52,8 @@ Free plan quota reached : allowed data storage in free plan exceeded
 Contact privacy breached : information out of public use leaked
 Existing contact informations not found : program cannot proven foundable informations
 Program delay makes it use unconfortable : over 3 seconds delay by task makes it out of quality expectations 
-Public historic : contact research historic is publicly visible
+Historic names : contact research historic show real names
 API key block : RapidAPI stop functionning
-External storage use : data accidently mooved on a second storage.
 
 ## Documentation 
 
@@ -64,5 +63,3 @@ External storage use : data accidently mooved on a second storage.
 - Risk analysis detail 
 - Product structure detail
 - Error explanation index
-
-

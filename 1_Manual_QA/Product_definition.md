@@ -5,13 +5,13 @@ Statut : On going
 
 ## Vision & Objective 
 
-When a company receive a new contact, she needs to be able to see who is this contact, to be able to make decisions. To do so, one way is to look for social media popularity. 
+Did you ever wondered if you had lots of follower on social media ? You can check the answer by looking over a certified account or a company popularity on social media, and compare yourselves with them. 
 
-This app is designed to allow to user to take an "image" of the person popularity at a determined instant, and be able to keep it in memory, to see its evolution. 
+This app is designed to allow to user to take an "image" of the subject popularity, and see the popularity score of the subject. The score calculation is showed, so that the other can calculate his own score and compare with th looked over subject. 
 
 ## Personas 
 
-Company A : Short timed after receiving a new contact, it needs to quickly assess of this contact popularity. 
+Company A : Curious person who wish to compare his contacts on social media with recognized entities. 
 
 Company B : Looking for new partner to work with on the long run, it would like to assess the evolution of promising prospect. 
 
@@ -22,18 +22,18 @@ Company B : Looking for new partner to work with on the long run, it would like 
 |01|Select a contact|Allow the user to select contact to look for|Critical|
 |02|Data enrichment|API call to look for the contact infos|Critical|
 |03|Scoring engine|Calculate a popularity score based on research result|Important|
-|04|Historic|View already looked for contact and score at that time|Important|
+|04|Historic|View already looked for contact (by research ID only) and score at that time|Important|
 |05|Dashboard|Quick view of top contacts score and evolution|Low|
 
 ## technical specifications 
 
 Frontend : HTML5, CSS3, JavaScript Vanilla (SPA architecture)
-Backend : SQL.js
+Backend : Supabase (SQL)
 API tierce : RapidAPI 
 
 ## QA & Data delimitations 
 
-Research and results must me stocked locally : no publication involved. 
+Research and results must me stocked under an ID, and no name should be present on historic. 
 
 Privacy and non disclosure policy must be encountered before program use. 
 

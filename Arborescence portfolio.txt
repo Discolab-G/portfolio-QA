@@ -1,37 +1,45 @@
-qa-analyst-portfolio/
-├── README.md
-├── 00_profile/
-│   ├── about_me.md
-│   └── skills_matrix.md
-├── 01_manual_qa/
-│   ├── test_plan.md
-│   ├── risk_analysis.md
-│   ├── test_cases/
-│   │   ├── authentication_test_cases.md
-│   │   └── checkout_test_cases.md
-│   └── bug_reports/
-│       ├── bug_001.md
-│       ├── bug_002.md
-│       └── ...
-├── 02_api_testing/
-│   ├── postman_collection.json
-│   ├── environment.json
-│   ├── api_test_strategy.md
-│   └── api_test_report.md
-├── 03_sql_validation/
-│   ├── schema.md
-│   ├── seed_data/
-│   │   └── qa_dataset.csv
-│   ├── validation_queries.sql
-│   └── sql_notes.md
-├── 04_qa_data/
-│   ├── kpi_dictionary.md
-│   ├── qa_analysis.sql
-│   ├── insights.md
-│   └── reporting/
-│       ├── quality_weekly_report.md
-│       └── quality_monthly_report.md
-├── assets/
-│   ├── screenshots/
-│   └── diagrams/
-└── CONTRIBUTING.md
+# qa-analyst-portfolio/
+
+## README.md
+
+## 00_profile/
+### about_me.md
+### skills_matrix.md
+
+## 01_manual_qa/
+### test_plan.md
+### risk_analysis.md
+### test_cases/
+#### authentication_test_cases.md
+#### checkout_test_cases.md
+### bug_reports/
+#### bug_001.md
+#### bug_002.md
+#### ...
+
+## 02_api_testing/
+### postman_collection.json
+### environment.json
+### api_test_strategy.md
+### api_test_report.md
+
+## 03_sql_validation/
+### schema.md
+### seed_data/
+#### qa_dataset.csv
+### validation_queries.sql
+### sql_notes.md
+
+## 04_qa_data/
+### kpi_dictionary.md
+### qa_analysis.sql
+### insights.md
+### reporting/
+#### quality_weekly_report.md
+#### quality_monthly_report.md
+
+## assets/
+### screenshots/
+### diagrams/
+
+## CONTRIBUTING.md

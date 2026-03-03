@@ -19,6 +19,6 @@ All risk present here are consquential of risk mentionned by the Test_plan.
 |R2|Contact privacy breached|5|3|15|Preventives mesures on data transfer|
 |R3|Existing contact not found|4|4|16|Integrated error message for quick analysis of bug|
 |R4|Program delay|4|2|8|Light programmation with no incorporated side content|
-|R5|Public history|5|1|5|Preventive specified testing before release|
+|R5|Name in history|5|1|5|Preventive specified testing before release|
 |R6|API key block|5|1|5|Regular maintenance and functionnability test|
 |R7|Exernale storage use|3|2|6|Preventives mesures on data transfer|
