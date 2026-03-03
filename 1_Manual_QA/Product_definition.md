@@ -1,6 +1,6 @@
 # Popularity ranking program 
 
-Author : Gabriel 
+Author : Gabriel Samson
 Statut : On going 
 
 ## Vision & Objective 
@@ -17,7 +17,8 @@ Company B : Looking for new partner to work with on the long run, it would like 
 
 ## Fonctionalities 
 
-| ---- ID ---- | ---- Fonctionality ---- |---- Description ---- | ---- Priority ---- |
+|  ID  |  Fonctionality   Description  |  Priority  |
+|:-----|:-----:|:-----:|-----:|
 |01|Select a contact|Allow the user to select contact to look for|Critical|
 |02|Data enrichment|API call to look for the contact infos|Critical|
 |03|Scoring engine|Calculate a popularity score based on reschech result|Important|
@@ -27,10 +28,14 @@ Company B : Looking for new partner to work with on the long run, it would like 
 ## technical specifications 
 
 Frontend : HTML5, CSS3, JavaScript Vanilla (SPA architecture)
-Backend : Supabase (PostgreSQL)
+Backend : SQL.js
 API tierce : RapidAPI 
 
 ## QA & Data delimitations 
+
+Reschearch and results must me stocked locally : no publication involved. 
+
+Privacy and non disclosure policy must be encountered before program use. 
 
 01 functionnality caracter entry : must deny special caracters (as %$& ...).
 
