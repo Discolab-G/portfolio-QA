@@ -31,16 +31,16 @@ Frontend : HTML5, CSS3, JavaScript Vanilla (SPA architecture)
 Backend : Supabase (SQL)
 API tierce : RapidAPI 
 
+## Data origin 
+
+Data is sourced in real-time via RapidAPI. Results are not cached to ensure the highest accuracy at the time of request. Please note that third-party API limitations may result in slight discrepancies.
+
 ## QA & Data delimitations 
 
 Research and results must me stocked under an ID, and no name should be present on historic. 
-
 Privacy and non disclosure policy must be encountered before program use. 
-
 01 functionnality caracter entry : must deny special caracters (as %$& ...).
-
 03 scoring engine functionnality : must allow no results (partial or total) - error 400 and 500 - and answer adequatly. Must limit score numbers to integer numbers. 
-
 04 historic functionnality : must allow deletion of historic lines, must limit to lines number to 1000.
 
 
