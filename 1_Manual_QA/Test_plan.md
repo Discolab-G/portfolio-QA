@@ -26,7 +26,7 @@ This document will serve as a reference of quality expectations and testing scop
 - Personnal contact informations
 - Social media design informations
 - Personnal contact account informations details
-- Users use of rescheach results
+- Users use of research results
 
 ## Test strategy 
 
@@ -60,9 +60,8 @@ External storage use : data accidently mooved on a second storage.
 
 - Test plan 
 - Product definition
-- Test cases 
+- Test cases & Bug report model
 - Risk analysis detail 
-- Bug report model
 - Product structure detail
 - Error explanation index
 

@@ -21,7 +21,7 @@ Company B : Looking for new partner to work with on the long run, it would like 
 |:-----|:-----:|:-----:|-----:|
 |01|Select a contact|Allow the user to select contact to look for|Critical|
 |02|Data enrichment|API call to look for the contact infos|Critical|
-|03|Scoring engine|Calculate a popularity score based on reschech result|Important|
+|03|Scoring engine|Calculate a popularity score based on research result|Important|
 |04|Historic|View already looked for contact and score at that time|Important|
 |05|Dashboard|Quick view of top contacts score and evolution|Low|
 
@@ -33,7 +33,7 @@ API tierce : RapidAPI
 
 ## QA & Data delimitations 
 
-Reschearch and results must me stocked locally : no publication involved. 
+Research and results must me stocked locally : no publication involved. 
 
 Privacy and non disclosure policy must be encountered before program use. 
 
