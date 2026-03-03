@@ -48,13 +48,13 @@ Exit : KPI reached on fonctionnality, no major or more bug uncovered. Release on
 
 ## Risk analysis 
 
-Free plan quota reached. 
-Contact privacy breached. 
-Existing contact informations not found.
-Program delay makes it use unconfortable. 
-Public historic.  
-API key block.
-External storage use. 
+Free plan quota reached : allowed data storage in free plan exceeded 
+Contact privacy breached : information out of public use leaked
+Existing contact informations not found : program cannot proven foundable informations
+Program delay makes it use unconfortable : over 3 seconds delay by task makes it out of quality expectations 
+Public historic : contact research historic is publicly visible
+API key block : RapidAPI stop functionning
+External storage use : data accidently mooved on a second storage.
 
 ## Documentation 
 
