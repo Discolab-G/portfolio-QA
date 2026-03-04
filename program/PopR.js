@@ -2,6 +2,38 @@
 
 // ----------   research    --------------
 
+async function fetchFromRapidAPI() {
+  try {
+    const response = await fetch('https://instagram-scraper-stable-api.p.rapidapi.com/get_ig_user_about.php?username_or_url=quoteoftheday', {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Host': 'instagram-scraper-stable-api.p.rapidapi.com',
+        'X-RapidAPI-Key': '4f536a07ebmsh319f1fdea0f5a93p159e1fjsn9ae5eafc06a6'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`Erreur HTTP: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.error('Erreur lors de la récupération:', error);
+  }
+};
+
+// Appeler la fonction
+
+searchButton.addEventListener('click', () {
+    let nameSearch = document.getElementById('nameSearch');
+    fetchFromRapidAPI(nameSearch);
+    console.log(followers);
+    answerScore = element.textContent(followers);
+});
+
+
 
 const searchButton = document.getElementById(searchButton);
 const answerScore = document.getElementById(answerScore);
@@ -20,6 +52,9 @@ saveButton.addEventListener('click', function () {
 });
 
 // -----------    Historic      -------------
+
+import {'PopR_historic_table'} from '@supabase/supabase-js'
+
 
 async function refreshAllData() {
     const refresh = document.getElementById('refreshButton');
