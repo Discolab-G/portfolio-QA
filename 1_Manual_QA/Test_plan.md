@@ -1,76 +1,65 @@
-## About Elytra
+# Test plan Popularity ranking Program 
 
-Elytra is a recently created company. The website and business model will be replicated here, but all informations and data are fictives, for privacy reasons.
+Statut : On going 
+Author : Gabriel Samson
 
-# Elyta Booking Simulation API -- Test plan
+## Introduction
 
-## Model description
+The app is designed to allow to user to take an "image" of the person popularity at a determined instant, and be able to keep it in memory, to comprare to other result
 
-The model emulates travel service inspired from Elytra business model. It allows customization of pack (product) and key components of the simulation and give clear report, of what the result of the simulation should be.
+This document will serve as a reference of quality expectations and testing scope. It will also serve to define expected documentation and define the test strategy. 
 
-This simulation contain : 
-- Pack (product) customization
-- Customer simulation 
-- Bookings simulation
-- Payments simulation
-- Availability simulation
-- Promo code simulation
-- Report & dashboard of the simulated travel
+## Scope 
 
-This siluation works with REST APi on Flask build, does not include account/authentification, or external services. Payment are simulated.
+### In-scope test
 
-## Test plan description
+- Delay
+- Calculation of the result
+- Historic storage and suppression
+- Free-plan and size limits 
+- Contact selection boundaries
+- Social medial boundaries
+- Historic privacy
 
-This is a risk-based test plan, with a high priority on accuracy of business-rules. Lunch of the simulation should be ready before 02/28. 
-In this order : Functional testing, validation of business rules, API validation, and Boundary testing. 
-All feature should be tested based on risk prioritization. 
-Some features, if time does not permit, could be postponed, and will be tested upon that time. 
+### Out of scope test
 
-## Risk assesment and Categorization
+- Personnal contact informations
+- Social media design informations
+- Personnal contact account informations details
+- Users use of research results
 
-Severity categorization : 
-Blocker : testing cannot continue
-Critical : Core feature broken (Pack non customzable, misleading simulation results...)
-Major : Important feature partially broken (Customer report unailable, promo code non available...)
-Minor : Small functionnal issue (delays, lack of flexibility...)
-Trivial : UI / cosmetic 
+## Test strategy 
 
-## Feature to be tested 
+|Test type|Description|tool|
+|:-----|:-----|-----:|
+|Fonctionality test|Test UI responsivity, query and answers|Manual testing, JavaScript test program|
+|API testing|Test API search over social media|Postman|
+|Data testing|Test data complecency and info retail|SQL|
+|Boundary testing|Test edge cases complience|Manual testing|
 
-High priority : 
-- Customization of pack (product)
-- Dashboard & report
+## Environment 
 
-Medium priority : 
-- Variable cost detail customization
-- Partial simulation
+Chrome, supabase, RapidAPI
 
-Low priority : 
-- Large group simulation
-- Date 
-- Name customzation
+## Entry and exit criteria 
 
-## Test approach and schedule
+Entry : First version code completed and updated on GitHub, manual test by liveServer. 
+Exit : KPI reached on fonctionnality, no major or more bug uncovered. Release on GitHub Pages. 
 
-First realease scheduled for 02/28.
-First update on 02/10. 
+## Risk analysis 
 
-Simulation feature and customization should be approved before release. 
-Positive scenario : All main features are usable before release, less than 5 fields noncustomizables, under 5% of 400 errors messages. After release check used for minor fixes, or implemantation of futur features. 
-Negative scenario : Major features defects, main fields non available, unresponsive customizable feature, over 50% of 400 errors messages. Release delayed by 5 days. 
+Free plan quota reached : allowed data storage in free plan exceeded 
+Contact privacy breached : information out of public use leaked
+Existing contact informations not found : program cannot proven foundable informations
+Program delay makes it use unconfortable : over 3 seconds delay by task makes it out of quality expectations 
+Historic names : contact research historic show real names
+API key block : RapidAPI stop functionning
 
-If worth than negative scenario : temporary closure of project. 
+## Documentation 
 
-#### Entry and exit criteria
-
-Entry Criteria: Risk assessment complete, high-risk test cases ready, test environment set.
-Exit Criteria: All high-risk test cases executed, critical defects resolved, API result 95%+ 200messages, medium/low-risk areas tested (if time permits).
-
-## Metrics and reporting 
-
-Input reliability: % of accuracy of report and dashboard numbers (objective at 0,01 unit precision)
-Booking report: Number of cancellation or non reservation showed. 
-Risk-Based Coverage: % of high, medium, and low-risk features teste
-Defect Metrics: Number of defects found in high-risk areas vs. medium and low-risk areas.
-Test Execution Progress: Number of test cases executed, passed, failed by risk level
-Risk Mitigation Report: Outcomes of high-risk testing, remaining risks
+- Test plan 
+- Product definition
+- Test cases & Bug report model
+- Risk analysis detail 
+- Product structure detail
+- Error explanation index
