@@ -1,57 +1,90 @@
-// JavaScript file of PopR 
+/* -----------------------------------------------------------------------------------------------------------
+                                      JavaScript file of PopR 
+*/ // -----------------------------------------------------------------------------------------------------------
 
-// ----------   research    --------------
+// ----------------------------------------   research    -------------------------------------------------
 
-async function fetchFromRapidAPI() {
-  try {
-    const response = await fetch('https://instagram-scraper-stable-api.p.rapidapi.com/get_ig_user_about.php?username_or_url=quoteoftheday', {
-      method: 'GET',
-      headers: {
-        'X-RapidAPI-Host': 'instagram-scraper-stable-api.p.rapidapi.com',
-        'X-RapidAPI-Key': '4f536a07ebmsh319f1fdea0f5a93p159e1fjsn9ae5eafc06a6'
-      }
-    });
+    //      const & API 
+const searchButton = document.getElementById('searchButton');
+const answerScore = document.getElementById('answerScore');
 
-    if (!response.ok) {
-      throw new Error(`Erreur HTTP: ${response.status}`);
+
+    //      Answer to button
+
+searchButton.addEventListener('click', () => {
+
+    //      look for query 
+
+    const nameSearch = document.getElementById('nameSearch');
+    const searchItem = nameSearch.value;
+
+    //    API call
+    
+    async function search() {
+            
+        const url = `/api/search/?q=${searchItem}`;
+
+        try {
+            const response = await fetch(url);
+            const result = await response.text();
+            console.log(result);
+        } catch (error) {
+            console.error(error);
+            return "error at API call";
+        } 
+    };
+    
+    //      Answer
+
+    async function displayAnswer () {
+        const score = await search();
+        answerScore.innerHTML = `<p class="answer" aria-label="answer">${score}</p>`;
     }
 
-    const data = await response.json();
-    console.log(data);
-    return data;
-  } catch (error) {
-    console.error('Erreur lors de la récupération:', error);
-  }
-};
+    //      Show answer
 
-// Appeler la fonction
-
-searchButton.addEventListener('click', () {
-    let nameSearch = document.getElementById('nameSearch');
-    fetchFromRapidAPI(nameSearch);
-    console.log(followers);
-    answerScore = element.textContent(followers);
+    displayAnswer ();
 });
 
 
 
-const searchButton = document.getElementById(searchButton);
-const answerScore = document.getElementById(answerScore);
-const saveButton = document.getElementById(saveButton);
+//  ------------------------------   Save result   ------------------------------------------------------- 
 
-addEventListener("keypress", function () {
-    let nameSearch = this.document.getElementById(nameSearch);
-})
+const saveButton = document.getElementById('saveButton');
 
-saveButton.addEventListener('click', function () {
-    const { data } = await supabase
-  .from('PopR_historic_table')
-  .insert([
-    { Score_column: 'answerScore' },
-  ]);
-});
+    //      Tcheck answer type
+saveButton.addEventListener('click', async function () {
+    if (typeof answerScore !== 'number' || answerScore < 0) {
+        console.error('Score invalide');
+        return "score type lisibility error";
+    }
 
-// -----------    Historic      -------------
+    //       Score save
+    const { data, error } = await supabase
+    .from('PopR_historic_table')
+    .insert { Score_column: answerScore };
+    
+
+    //      save error 
+    if (error) {
+    console.error('Erreur insertion :', error.message);
+    return;
+    }
+
+    //      Final save 
+    console.log('Score sauvegardé :', data);
+
+
+        const { data } = await supabase
+    .from('PopR_historic_table')
+    .insert([
+        { Score_column: 'answerScore' },
+    ]);
+;
+
+
+
+// -------------------------------------    Historic      ---------------------------------------------------
 
 import {'PopR_historic_table'} from '@supabase/supabase-js'
 
