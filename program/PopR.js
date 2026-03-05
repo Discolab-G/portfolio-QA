@@ -1,106 +1,164 @@
-// JavaScript file of PopR 
+/* -----------------------------------------------------------------------------------------------------------
+                                      JavaScript file of PopR 
+*/ // -----------------------------------------------------------------------------------------------------------
 
-// ----------   research    --------------
+// ----------------------------------------   research    -------------------------------------------------
 
-async function fetchFromRapidAPI() {
-  try {
-    const response = await fetch('https://instagram-scraper-stable-api.p.rapidapi.com/get_ig_user_about.php?username_or_url=quoteoftheday', {
-      method: 'GET',
-      headers: {
-        'X-RapidAPI-Host': 'instagram-scraper-stable-api.p.rapidapi.com',
-        'X-RapidAPI-Key': '4f536a07ebmsh319f1fdea0f5a93p159e1fjsn9ae5eafc06a6'
-      }
-    });
+    //      const & API 
 
-    if (!response.ok) {
-      throw new Error(`Erreur HTTP: ${response.status}`);
+const searchButton = document.getElementById('searchButton');
+const answerScore = document.getElementById('answerScore');    
+    
+    //      Answer to button
+
+searchButton.addEventListener('click', () => {
+
+    //      look for query 
+
+    const nameSearch = document.getElementById('nameSearch');
+    const searchItem = nameSearch.value;
+
+    //    API call
+    
+    async function search() {
+            
+        const url = `/api/search/?q=${searchItem}`;
+
+        try {
+            const response = await fetch(url);
+            const result = await response.text();
+            console.log(result);
+        } catch (error) {
+            console.error(error);
+            return "error at API call";
+        } 
+    };
+    
+    //      Answer
+
+    async function displayAnswer () {
+        const score = await search();
+        answerScore.innerHTML = `<p class="answer" aria-label="answer">${score}</p>`;
     }
 
-    const data = await response.json();
-    console.log(data);
-    return data;
-  } catch (error) {
-    console.error('Erreur lors de la récupération:', error);
-  }
-};
+    //      Show answer
 
-// Appeler la fonction
-
-searchButton.addEventListener('click', () {
-    let nameSearch = document.getElementById('nameSearch');
-    fetchFromRapidAPI(nameSearch);
-    console.log(followers);
-    answerScore = element.textContent(followers);
+    displayAnswer ();
 });
 
 
 
-const searchButton = document.getElementById(searchButton);
-const answerScore = document.getElementById(answerScore);
-const saveButton = document.getElementById(saveButton);
+//  ------------------------------   Save result   ------------------------------------------------------- 
 
-addEventListener("keypress", function () {
-    let nameSearch = this.document.getElementById(nameSearch);
-})
+const saveButton = document.getElementById('saveButton');
 
-saveButton.addEventListener('click', function () {
-    const { data } = await supabase
-  .from('PopR_historic_table')
-  .insert([
-    { Score_column: 'answerScore' },
-  ]);
-});
+    //      Check answer validity (type and positive)
 
-// -----------    Historic      -------------
-
-import {'PopR_historic_table'} from '@supabase/supabase-js'
-
-
-async function refreshAllData() {
-    const refresh = document.getElementById('refreshButton');
-    if (refresh) refresh.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> loading...';
-
-    try {
-        const r = await window.pywebview.api.get_sheet_data('PopR_historic_table');
-        if (r.success) historic = r.data;
-    } catch (e) {
-        savedHistoric = [];
+saveButton.addEventListener('click', async function () {
+    let answerValue ;  
+    if (typeof answerType === 'string') { answerValue = parseInt(answerType) } else { answerValue = answerType };
+    if (typeof answerValue !== 'number' || answerValue < 0) {
+        console.error('Score invalide');
+        return "score type lisibility error";
     }
 
-    if (refresh) refresh.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> loading...';
-}
+    //       Score save
 
-const historicTable = document.getElementById(historicTable);
+    const { data, error } = await supabase
+    .from('PopR_historic_table')
+    .insert ([{ Score_column: answerValue }]);
+    
+
+    //      save error 
+
+    if (error) {
+    console.error('Erreur insertion :', error.message);
+    return;
+    }
+
+    //      Final save 
+
+    console.log('Score sauvegardé :', data);
+});
 
 
-let historic = {
-    id:[],
-    created_at:[],
-    Score:[],
-};
 
-try {
+// -------------------------------------    Historic      ---------------------------------------------------
+
+const refreshButton = document.getElementById('refreshButton');
+const historicBody = document.getElementById('historicBody');
+
+    //      Table activation
+
+refreshButton.addEventListener('click', async function () {
+    
+    //      Supabase copy 
+
     let { data: PopR_historic_table, error } = await supabase
     .from('PopR_historic_table')
     .select('*')
-};
 
-// Refresh table 
-async function refreshAllData() {
-    if (keypress) historicTable.innerHTML='<i class)"resfresh ..."></i> loading...';
+    //      Preventive error message
 
-    //load of historic
-    for(let historic of historicBody)
-};
+    if(error) {
+        console.error('error', error.message);
+        return 'Could not get supabase data';
+    };
+
+    // ----------------     Insert table info    -------------------- 
+
+    //      Reset table 
+
+    historicBody.innerHTML = ''; 
+
+    //      Add new table info
+
+    PopR_historic_table.forEach(row => {
+
+        // Insert info into table
+
+        historicBody.innerHTML += `
+        <tr>
+            <td>${row.id}</td>
+            <td>${row.created_at}</td>
+            <td>${row.score}</td>
+            <td><button class='deleteButton' data-id="${row.id}">🗑️</button></td>
+        </tr>
+        `});
+        
+        //      give id to all button
+
+        document.querySelectorAll('.deleteButton').forEach(bouton => {
+            bouton.addEventListener('click', async () => {
+                const id = bouton.dataset.id;
+
+        //      delete request to supabase
+                
+                const {error} = await supabase
+                    .from('PopR_historic_table')
+                    .delete()
+                    .eq('id',id);
+
+        //      if error 
+                
+                if (error) {
+                    console.error('Suppression Error', error.message);
+                    return 'error in return of supression from supabase';
+                }
+
+        //      And finnaly with supress the line
+
+                bouton.closest('tr').remove(); 
+            }); 
+    });       
+});
 
 
-const historicBody = document.getElementById(historicBody);
+// --------------------------------------------- Policy -----------------------------------------------------------------
 
-// ---------- Policy ----------
-
-const policyLink = document.getElementById(policylink);
+const policyLink = document.getElementById('policyLink');
 
 policyLink.addEventListener('click', function (event) {
     event.preventDefault();
-    alert("Usage Policy & Privacy : This tool provides a decision-support metric. It does not perform 'automated individual decision-making' or profiling with legal effects. All final assessments remain at the sole discretion of the human user. This application is a technical demonstration developed for educational and portfolio purposes. Precision on Data sources : All information is fetched from public social media profiles via third-party APIs. This tool does not bypass privacy settings. Precision on privacy : No personal data is sold or shared. Search history is stored in a private database solely to demonstrate SQL and Data Analysis capabilities. Precision on responsability : The Score is based on a simplified academic algorithm and should not be used for professional recruitment or credit decisions. The author is not responsible for any misuse of the generated data. Precision on compliance : Users are encouraged to respect the Terms of Service of the respective social media platforms.)
-,});
+    alert("Usage Policy & Privacy : This tool provides a decision-support metric. It does not perform 'automated individual decision-making' or profiling with legal effects. All final assessments remain at the sole discretion of the human user. This application is a technical demonstration developed for educational and portfolio purposes. Precision on Data sources : All information is fetched from public social media profiles via third-party APIs. This tool does not bypass privacy settings. Precision on privacy : No personal data is sold or shared. Search history is stored in a private database solely to demonstrate SQL and Data Analysis capabilities. Precision on responsability : The Score is based on a simplified academic algorithm and should not be used for professional recruitment or credit decisions. The author is not responsible for any misuse of the generated data. Precision on compliance : Users are encouraged to respect the Terms of Service of the respective social media platforms.");
+});

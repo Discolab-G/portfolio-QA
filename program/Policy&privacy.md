@@ -6,4 +6,4 @@ This application is a technical demonstration developed for educational and port
 - Compliance : Users are encouraged to respect the Terms of Service of the respective social media platforms.
 
 
-This tool provides a decision-support metric. It does not perform 'automated individual decision-making' or profiling with legal effects. All final assessments remain at the sole discretion of the human user.
+This tool provides a decision-support metric. It does not perform 'automated individual decision-making' or profiling with legal effects. All final assessments remain at the sole discretion of the human user. 
