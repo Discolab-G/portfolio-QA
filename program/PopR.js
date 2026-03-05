@@ -2,14 +2,21 @@
                                       JavaScript file of PopR 
 */ // -----------------------------------------------------------------------------------------------------------
 
+    //      Import supabase 
+
+    const supabase = createClient('https://xyzcompany.supabase.co', 'SUPABASE_KEY')
+
+
 // ----------------------------------------   research    -------------------------------------------------
 
     //      const & API 
 
 const searchButton = document.getElementById('searchButton');
 const answerScore = document.getElementById('answerScore');
+const answerType = answerScore.textContent;
 
-
+    
+    
     //      Answer to button
 
 searchButton.addEventListener('click', () => {
@@ -56,16 +63,21 @@ const saveButton = document.getElementById('saveButton');
     //      Check answer validity (type and positive)
 
 saveButton.addEventListener('click', async function () {
-    if (typeof answerScore !== 'number' || answerScore < 0) {
+    if (typeof answerValue !== 'number' || answerValue < 0) {
         console.error('Score invalide');
         return "score type lisibility error";
     }
+
+    //      Additionnal variable creation for score traitement 
+
+    let answerValue ;  
+    if (typeof answerType === 'string') { answerValue = parseInt(answerType) } else { answerValue = answerType };
 
     //       Score save
 
     const { data, error } = await supabase
     .from('PopR_historic_table')
-    .insert ([{ Score_column: answerScore }]);
+    .insert ([{ Score_column: answerValue }]);
     
 
     //      save error 
@@ -112,7 +124,7 @@ refreshButton.addEventListener('click', async function () {
 
     //      Add new table info
 
-    data.forEach(row => {
+    PopR_historic_table.forEach(row => {
 
         // Insert info into table
 
@@ -123,11 +135,11 @@ refreshButton.addEventListener('click', async function () {
             <td>${row.score}</td>
             <td><button class='deleteButton' data-id="${row.id}">🗑️</button></td>
         </tr>
-        `;
+        `});
         
         //      give id to all button
 
-        document.querySelectorAll('deleteButton').forEach(bouton => {
+        document.querySelectorAll('.deleteButton').forEach(bouton => {
             bouton.addEventListener('click', async () => {
                 const id = bouton.dataset.id;
 
@@ -148,19 +160,14 @@ refreshButton.addEventListener('click', async function () {
         //      And finnaly with supress the line
 
                 bouton.closest('tr').remove(); 
-            });
-        });
-
-
-         
-    });
-          
+            }); 
+    });       
 });
 
 
 // --------------------------------------------- Policy -----------------------------------------------------------------
 
-const policyLink = document.getElementById(policylink);
+const policyLink = document.getElementById('policyLink');
 
 policyLink.addEventListener('click', function (event) {
     event.preventDefault();
