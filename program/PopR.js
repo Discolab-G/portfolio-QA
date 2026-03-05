@@ -12,10 +12,7 @@
     //      const & API 
 
 const searchButton = document.getElementById('searchButton');
-const answerScore = document.getElementById('answerScore');
-const answerType = answerScore.textContent;
-
-    
+const answerScore = document.getElementById('answerScore');    
     
     //      Answer to button
 
@@ -63,15 +60,12 @@ const saveButton = document.getElementById('saveButton');
     //      Check answer validity (type and positive)
 
 saveButton.addEventListener('click', async function () {
+    let answerValue ;  
+    if (typeof answerType === 'string') { answerValue = parseInt(answerType) } else { answerValue = answerType };
     if (typeof answerValue !== 'number' || answerValue < 0) {
         console.error('Score invalide');
         return "score type lisibility error";
     }
-
-    //      Additionnal variable creation for score traitement 
-
-    let answerValue ;  
-    if (typeof answerType === 'string') { answerValue = parseInt(answerType) } else { answerValue = answerType };
 
     //       Score save
 
