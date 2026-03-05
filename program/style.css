@@ -7,15 +7,15 @@
 /* ─── Variables ─────────────────────────────────────────────────────────────── */
 
 :root {
-    --bg:           #0e0e0e;
-    --surface:      #161616;
-    --surface-2:    #1f1f1f;
-    --border:       #2a2a2a;
-    --text:         #e8e8e8;
-    --text-muted:   #666;
-    --accent:       #c8f135;
-    --accent-dim:   #9db82a;
-    --danger:       #ff4d4d;
+    --bg:           #384454;
+    --surface:      #2e3a47;
+    --surface-2:    #263240;
+    --border:       #4a5868;
+    --text:         #D4D3DC;
+    --text-muted:   #AD956B;
+    --accent:       #E1A624;
+    --accent-dim:   #c48f1a;
+    --danger:       #317AC1;
     --radius:       6px;
     --font-display: 'Syne', sans-serif;
     --font-mono:    'DM Mono', monospace;
@@ -148,7 +148,7 @@ section {
 .searchButton {
     background: var(--accent);
     border: none;
-    color: #0e0e0e;
+    color: #263240;
     font-family: var(--font-mono);
     font-size: 0.8rem;
     font-weight: 500;

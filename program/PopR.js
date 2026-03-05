@@ -2,11 +2,6 @@
                                       JavaScript file of PopR 
 */ // -----------------------------------------------------------------------------------------------------------
 
-    //      Import supabase 
-
-    const supabase = createClient('https://xyzcompany.supabase.co', 'SUPABASE_KEY')
-
-
 // ----------------------------------------   research    -------------------------------------------------
 
     //      const & API 
