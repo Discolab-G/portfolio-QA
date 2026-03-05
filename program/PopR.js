@@ -5,6 +5,7 @@
 // ----------------------------------------   research    -------------------------------------------------
 
     //      const & API 
+
 const searchButton = document.getElementById('searchButton');
 const answerScore = document.getElementById('answerScore');
 
@@ -53,6 +54,7 @@ searchButton.addEventListener('click', () => {
 const saveButton = document.getElementById('saveButton');
 
     //      Check answer validity (type and positive)
+
 saveButton.addEventListener('click', async function () {
     if (typeof answerScore !== 'number' || answerScore < 0) {
         console.error('Score invalide');
@@ -60,18 +62,21 @@ saveButton.addEventListener('click', async function () {
     }
 
     //       Score save
+
     const { data, error } = await supabase
     .from('PopR_historic_table')
     .insert ([{ Score_column: answerScore }]);
     
 
     //      save error 
+
     if (error) {
     console.error('Erreur insertion :', error.message);
     return;
     }
 
     //      Final save 
+
     console.log('Score sauvegardé :', data);
 });
 
@@ -82,29 +87,78 @@ saveButton.addEventListener('click', async function () {
 const refreshButton = document.getElementById('refreshButton');
 const historicBody = document.getElementById('historicBody');
 
+    //      Table activation
 
 refreshButton.addEventListener('click', async function () {
     
+    //      Supabase copy 
+
     let { data: PopR_historic_table, error } = await supabase
     .from('PopR_historic_table')
     .select('*')
 
+    //      Preventive error message
+
     if(error) {
         console.error('error', error.message);
         return 'Could not get supabase data';
-    }
+    };
 
-    
+    // ----------------     Insert table info    -------------------- 
+
+    //      Reset table 
+
+    historicBody.innerHTML = ''; 
+
+    //      Add new table info
+
+    data.forEach(row => {
+
+        // Insert info into table
+
+        historicBody.innerHTML += `
+        <tr>
+            <td>${row.id}</td>
+            <td>${row.created_at}</td>
+            <td>${row.score}</td>
+            <td><button class='deleteButton' data-id="${row.id}">🗑️</button></td>
+        </tr>
+        `;
+        
+        //      give id to all button
+
+        document.querySelectorAll('deleteButton').forEach(bouton => {
+            bouton.addEventListener('click', async () => {
+                const id = bouton.dataset.id;
+
+        //      delete request to supabase
+                
+                const {error} = await supabase
+                    .from('PopR_historic_table')
+                    .delete()
+                    .eq('id',id);
+
+        //      if error 
+                
+                if (error) {
+                    console.error('Suppression Error', error.message);
+                    return 'error in return of supression from supabase';
+                }
+
+        //      And finnaly with supress the line
+
+                bouton.closest('tr').remove(); 
+            });
+        });
+
+
+         
+    });
           
 });
 
 
-
-
-
-
-
-// ---------- Policy ----------
+// --------------------------------------------- Policy -----------------------------------------------------------------
 
 const policyLink = document.getElementById(policylink);
 
