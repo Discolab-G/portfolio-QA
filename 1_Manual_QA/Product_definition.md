@@ -19,11 +19,11 @@ Company B : Looking for new partner to work with on the long run, it would like 
 
 |  ID  |  Fonctionality   Description  |  Priority  |
 |:-----|:-----:|:-----:|-----:|
-|01|Select a contact|Allow the user to select contact to look for|Critical|
-|02|Data enrichment|API call to look for the contact infos|Critical|
-|03|Scoring engine|Calculate a popularity score based on research result|Important|
-|04|Historic|View already looked for contact (by research ID only) and score at that time|Important|
-|05|Dashboard|Quick view of top contacts score and evolution|Low|
+|F01|Select a contact|Allow the user to select contact to look for|Critical|
+|F02|Data enrichment|API call to look for the contact infos|Critical|
+|F03|Scoring engine|Calculate a popularity score based on research result|Important|
+|F04|Historic|View already looked for contact (by research ID only) and score at that time|Important|
+|F05|Dashboard|Quick view of top contacts score and evolution|Low|
 
 ## technical specifications 
 
