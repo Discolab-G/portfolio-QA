@@ -4,8 +4,6 @@
 
 QA Analyst focused on API testing, SQL validation and quality reporting. Strong understanding of bachend validation, defect lifecycle and QA communication. 
 
-Currently seeking a QA Analyst position. 
-
 ## What this repository demonstrates 
 
 This portoflio shows my abity to :
@@ -41,9 +39,9 @@ To update
 - SQL (PostgreSQL)
 - Markdown documentation
 - VS code 
-- Git / GitHut 
-- Google cloud
-- Elytra-go.com website
+- Git / GitHut
+- Vercel
+- Supabase
 - Variety of LLM (copilot, gpt, claude)
 
 ## Contact 
