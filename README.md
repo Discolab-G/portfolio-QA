@@ -1,5 +1,6 @@
 # QA Analyst Portfolio -- Gabriel Samson 
 
+## Linked webapp : https://portfolio-qa-app.vercel.app/
 ## About me 
 
 QA Analyst focused on API testing, SQL validation and quality reporting. Strong understanding of bachend validation, defect lifecycle and QA communication. 
