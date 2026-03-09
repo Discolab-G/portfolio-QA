@@ -1,0 +1,33 @@
+# B01, report over F01 : Application cannot reach API. 
+
+## Statut 
+
+On going
+
+## Severity
+
+Critical (5)
+
+### Test case TC01
+### Risk ID R7
+### Functionality F01
+
+## Description 
+
+Test of API reach by the application. The application cannot reach the API, with no possibility to get answer to query. 
+
+## Steps to reproduce 
+
+- Go to portfolio-qa-three.vercel.app
+- Enter Instagram in query field 
+- Press Research
+
+
+
+## Actual result 
+
+The answer is "Undefined", meaning the API could not be reached. 
+
+## Expected result
+
+The answer should be numerical. 

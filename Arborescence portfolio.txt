@@ -13,8 +13,8 @@
 #### authentication_test_cases.md
 #### checkout_test_cases.md
 ### bug_reports/
-#### bug_001.md
-#### bug_002.md
+#### bug_01.md
+#### bug_02.md
 #### ...
 
 ## 02_api_testing/
